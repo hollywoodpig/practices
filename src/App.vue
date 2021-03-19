@@ -64,6 +64,17 @@ export default {
   --font: system-ui, -apple-system, segoe-ui, sans-serif;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000;
+    --border: #222;
+    --text: #666;
+    --text-item: #0a0a0a;
+    --secondary: #000;
+    --accent: #ff7d05;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 4px;
   height: 2px;
@@ -76,6 +87,12 @@ export default {
 
 ::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0);
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background: rgba(#fff, 0.2);
+  }
 }
 
 body {

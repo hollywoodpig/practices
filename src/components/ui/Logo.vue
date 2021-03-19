@@ -13,9 +13,11 @@ export default {
   height: 3em;
   user-select: none;
   -webkit-user-drag: none;
+}
 
-  path {
-    fill: var(--text);
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: invert(1);
   }
 }
 </style>

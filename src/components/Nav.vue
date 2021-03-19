@@ -44,12 +44,23 @@ export default {
   border: 1px solid var(--border);
   border-radius: 0.5rem;
   max-height: calc(24.5rem - 1px);
-  overflow-y: overlay;
+  overflow: overlay;
 
   @media (max-width: 576px) {
     display: flex;
     justify-content: space-between;
-    overflow-x: overlay;
+  }
+}
+
+@supports (overflow: overlay) {
+  .nav__menu {
+    overflow: overlay;
+  }
+}
+
+@supports not (overflow: overlay) {
+  .nav__menu {
+    overflow: auto;
   }
 }
 
@@ -60,6 +71,11 @@ export default {
   text-align: center;
   user-select: none;
   cursor: pointer;
+
+  @media (prefers-color-scheme: dark) {
+    background: var(--text-item);
+    color: var(--text);
+  }
 
   &:nth-child(even) {
     background: var(--secondary);

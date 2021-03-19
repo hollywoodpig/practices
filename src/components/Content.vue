@@ -1,14 +1,6 @@
 <template>
   <article class="content">
-    <iframe
-      class="iframe"
-      :src="src"
-      scrolling="no"
-      frameborder="no"
-      loading="lazy"
-      allowtransparency="true"
-      allowfullscreen="true"
-    >
+    <iframe class="iframe" :src="src" allowtransparency="true" allowfullscreen>
     </iframe>
   </article>
 </template>
@@ -21,7 +13,7 @@ export default {
   },
   computed: {
     src() {
-      return `https://codepen.io/randomrandomrandom/embed/${this.code}?theme-id=light&default-tab=html,result`;
+      return `https://codepen.io/randomrandomrandom/embed/${this.code}?theme-id=dark&default-tab=html,result`;
     },
   },
 };

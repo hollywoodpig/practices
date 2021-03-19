@@ -32,4 +32,10 @@ export default {
     text-align: right;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .header__title {
+    color: var(--text);
+  }
+}
 </style>
