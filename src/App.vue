@@ -1,53 +1,40 @@
 <template>
-  <div class="layout">
-    <Header title="Кирша Никита, ВД-30" />
-    <Nav
-      :items="practices"
-      :active="activePracticeIndex"
-      @selectPractice="selectPractice"
-    />
-    <Content :code="activePracticeCode" />
+  <div>
+    <Layout v-if="isPassed" />
+    <Login v-else :password="password" @pass="pass" />
   </div>
 </template>
 
 <script>
-import Content from "./components/Content.vue";
-import Header from "./components/Header.vue";
-import Nav from "./components/Nav.vue";
+import Layout from "./components/Layout.vue";
+import Login from "./components/Login.vue";
 
 export default {
-  components: { Header, Nav, Content },
+  components: { Login, Layout },
   name: "App",
   data() {
     return {
-      isLoaded: false,
-      practices: [],
-      activePracticeIndex: 0,
+      password: "",
+      isPassed: false,
     };
   },
   methods: {
-    async fetchPractices() {
+    async fetchPassword() {
       const res = await fetch("https://api.npoint.io/6a72e7dddfc24d58ed89");
-      const { practices } = await res.json();
+      const { password } = await res.json();
 
-      this.practices = practices;
-      this.isLoaded = true;
+      this.password = password;
     },
-    selectPractice(index) {
-      this.activePracticeIndex = index;
-    },
-  },
-  computed: {
-    activePracticeCode() {
-      if (this.isLoaded) {
-        return this.practices[this.activePracticeIndex].code;
-      } else {
-        return "VwmJeZa"; // a crutch, i know...
-      }
+    pass() {
+      this.isPassed = true;
     },
   },
   created() {
-    this.fetchPractices();
+    this.fetchPassword().then(() => {
+      if (localStorage.getItem("password") === this.password) {
+        this.pass();
+      }
+    });
   },
 };
 </script>
@@ -62,6 +49,7 @@ export default {
   --secondary: #f5f5f5;
   --accent: #0082fa;
   --font: system-ui, -apple-system, segoe-ui, sans-serif;
+  --trs: 0.3s ease;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -95,6 +83,11 @@ export default {
   }
 }
 
+::selection {
+  background: var(--accent);
+  color: var(--white);
+}
+
 body {
   overflow-x: hidden;
 }
@@ -103,51 +96,26 @@ a {
   text-decoration: none;
 }
 
-.layout {
+input,
+textarea {
+  font-family: var(--font);
+  font-size: inherit;
+  color: var(--text);
+  outline: none;
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.base-styles {
   height: 100vh;
   min-width: 320px;
   font-size: 16px;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  display: grid;
-  grid-gap: 1rem;
-  grid-template: auto 1fr / auto 1fr;
-  grid-template-areas:
-    "header header"
-    "nav content";
-
-  @media (max-width: 576px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr;
-    grid-template-areas:
-      "header "
-      "nav"
-      "content";
-  }
-
-  .header {
-    grid-area: header;
-  }
-
-  .nav {
-    grid-area: nav;
-    margin-left: 1rem;
-
-    @media (max-width: 576px) {
-      margin: 0 1rem;
-    }
-  }
-
-  .content {
-    grid-area: content;
-    overflow: hidden;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-
-    @media (max-width: 576px) {
-      margin: 0 1rem;
-    }
-  }
 }
 </style>
