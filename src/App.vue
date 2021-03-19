@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <transition name="scale" mode="out-in">
     <Layout v-if="isPassed" />
     <Login v-else :password="password" @pass="pass" />
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -49,7 +49,7 @@ export default {
   --secondary: #f5f5f5;
   --accent: #0082fa;
   --font: system-ui, -apple-system, segoe-ui, sans-serif;
-  --trs: 0.3s ease;
+  --trs: 0.4s ease;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -89,7 +89,8 @@ export default {
 }
 
 body {
-  overflow-x: hidden;
+  overflow: hidden;
+  background: var(--bg);
 }
 
 a {
@@ -117,5 +118,29 @@ button {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
+}
+
+// transitions
+
+.scale-enter-active,
+.scale-leave-active {
+  transition: var(--trs);
+}
+
+.scale-enter,
+.scale-leave-to {
+  transform: scale(1.2);
+  opacity: 0;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: var(--trs);
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
 }
 </style>

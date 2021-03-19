@@ -23,6 +23,7 @@ export default {
 .content {
   border: 1px solid var(--border);
   border-radius: 0.5rem;
+  background: var(--text-item);
 
   @media (max-width: 576px) {
     height: calc(100vh - 10rem);

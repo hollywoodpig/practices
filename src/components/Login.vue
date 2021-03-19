@@ -10,9 +10,11 @@
       id="password"
     />
     <Button @pressed="submit" scheme="primary">Войти</Button>
-    <p v-if="penaltyTextVisibility" class="penalty-text">
-      Мои работы так просто не украсть =)
-    </p>
+    <transition name="slide">
+      <p v-if="penaltyTextVisibility" class="penalty-text">
+        Мои работы так просто не украсть =)
+      </p>
+    </transition>
   </form>
 </template>
 
@@ -43,7 +45,9 @@ export default {
         this.$emit("pass");
       } else {
         this.penaltyTextVisibility = true;
-        this.fuckRAM();
+        setTimeout(() => {
+          this.fuckRAM();
+        }, 1488 - 228);
       }
     },
     fuckRAM() {
