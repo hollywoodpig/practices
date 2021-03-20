@@ -1,5 +1,5 @@
 <template>
-  <div class="layout base-styles">
+  <main class="layout base-styles">
     <Header title="Кирша Никита, ВД-30" />
     <Nav
       :items="practices"
@@ -7,7 +7,7 @@
       @selectPractice="selectPractice"
     />
     <Content :code="activePracticeCode" />
-  </div>
+  </main>
 </template>
 
 <script>

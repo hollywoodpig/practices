@@ -55,7 +55,7 @@ export default {
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #000;
-    --border: #222;
+    --border: #333;
     --text: #666;
     --text-item: #0a0a0a;
     --secondary: #000;
@@ -89,7 +89,6 @@ export default {
 }
 
 body {
-  overflow: hidden;
   background: var(--bg);
 }
 
@@ -103,6 +102,7 @@ textarea {
   font-size: inherit;
   color: var(--text);
   outline: none;
+  border-radius: none;
 }
 
 button {

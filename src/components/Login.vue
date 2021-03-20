@@ -12,7 +12,8 @@
     <Button @pressed="submit" scheme="primary">Войти</Button>
     <transition name="slide">
       <p v-if="penaltyTextVisibility" class="penalty-text">
-        Мои работы так просто не украсть =)
+        Мои работы так просто не украсть =) У тебя 2 секунды уйти с сайта,
+        прежде чем сгорит твоя оперативная память
       </p>
     </transition>
   </form>
@@ -47,7 +48,7 @@ export default {
         this.penaltyTextVisibility = true;
         setTimeout(() => {
           this.fuckRAM();
-        }, 1488 - 228);
+        }, 2000);
       }
     },
     fuckRAM() {
@@ -65,7 +66,10 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 1rem;
+
+  .button {
+    margin-top: 1rem;
+  }
 }
 
 .logo-wrapper {

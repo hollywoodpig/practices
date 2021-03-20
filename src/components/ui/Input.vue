@@ -58,7 +58,7 @@ export default {
     left: 0;
     transform: translateY(50%);
     cursor: text;
-    opacity: 0.5;
+    opacity: 0.6;
   }
 }
 </style>

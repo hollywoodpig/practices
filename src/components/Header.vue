@@ -22,7 +22,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
   padding: 1rem;
 
   &__title {
@@ -30,6 +29,10 @@ export default {
     font-size: 1rem;
     font-weight: normal;
     text-align: right;
+  }
+
+  @media (max-width: 576px) {
+    display: none;
   }
 }
 

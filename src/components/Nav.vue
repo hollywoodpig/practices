@@ -41,6 +41,7 @@ export default {
 }
 
 .nav__menu {
+  background: var(--secondary);
   border: 1px solid var(--border);
   border-radius: 0.5rem;
   max-height: calc(24.5rem - 1px);
@@ -65,6 +66,7 @@ export default {
 }
 
 .nav__item {
+  display: block;
   padding: 1rem;
   background: var(--bg);
   color: var(--text-item);
@@ -77,6 +79,10 @@ export default {
     color: var(--text);
   }
 
+  &:not(:last-child) {
+    border-right: 1px solid var(--border);
+  }
+
   &:nth-child(even) {
     background: var(--secondary);
     border-top: 1px solid var(--border);
@@ -85,8 +91,6 @@ export default {
     @media (max-width: 576px) {
       border-top: none;
       border-bottom: none;
-      border-left: 1px solid var(--border);
-      border-right: 1px solid var(--border);
     }
 
     &:last-child {
@@ -113,10 +117,6 @@ export default {
       &::before {
         content: "Практическая работа № ";
       }
-    }
-
-    @media (max-width: 576px) {
-      flex-grow: 1;
     }
   }
 }
