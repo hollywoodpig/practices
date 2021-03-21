@@ -1,7 +1,6 @@
 <template>
   <article class="content">
-    <iframe class="iframe" :src="src" allowtransparency="true" allowfullscreen>
-    </iframe>
+    <iframe class="iframe" :src="src"></iframe>
   </article>
 </template>
 
