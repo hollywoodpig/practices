@@ -4,11 +4,11 @@
       <li
         class="nav__item"
         :class="{ active: index === active }"
-        :key="'practice-' + item.id"
+        :key="'practice_' + index"
         v-for="(item, index) in items"
         @click="onSelectItem(index)"
       >
-        {{ item.id }}
+        {{ index + 1 }}
       </li>
     </ul>
   </nav>

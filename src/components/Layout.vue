@@ -40,7 +40,7 @@ export default {
   computed: {
     activePracticeCode() {
       if (this.isLoaded) {
-        return this.practices[this.activePracticeIndex].code;
+        return this.practices[this.activePracticeIndex];
       } else {
         return "VwmJeZa"; // a crutch, i know...
       }
